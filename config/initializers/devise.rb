@@ -162,7 +162,7 @@ Devise.setup do |config|
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
-  config.confirmation_keys = [ :empid ]
+  config.confirmation_keys = [ :emp_id ]
 
 
   # ==> Configuration for :rememberable
@@ -223,7 +223,7 @@ Devise.setup do |config|
   #
   # Defines which key will be used when recovering the password for an account
   # config.reset_password_keys = [:email]
-  config.reset_password_keys = [ :empid ]
+  config.reset_password_keys = [ :emp_id ]
 
 
   # Time interval you can reset your password with a reset password key.
