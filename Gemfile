@@ -36,6 +36,11 @@ gem 'simple_form'
 # Use Devise for Authentication
 gem 'devise'
 
+# Allow any model to be voted on
+gem 'acts_as_votable'
+
+# Allow any model to be follow on
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

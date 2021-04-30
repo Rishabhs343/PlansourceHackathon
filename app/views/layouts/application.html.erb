@@ -9,23 +9,22 @@
  
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
- 
-   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
- 
-   <script src="https://kit.fontawesome.com/3ec71fc36c.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/3ec71fc36c.js" crossorigin="anonymous"></script>
  
    <title>Hackathon</title>
- 
- </head>
- <body>
+  </head>
+
+  <body>
    <%= render 'layouts/header' %>
  
-   <div class="container">
+   <div class="container-fluid">
      <br/>
-     <% if notice %>
-       <%= render 'layouts/alerts' %>
-     <% end %>
+     <%# if notice %>
+       <%#= render 'layouts/alerts' %>
+     <%# end %>
      <%= yield %>
     
    </div>

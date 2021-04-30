@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div class='d-flex flex-column'>
+<%= render 'form', challenge: @challenge %>
+</div>
+
+<h1>Challenge List</h1>
+
+<table class="table table-striped ">
+  <thead class='tablehead'>
+    <tr>
+      <th>Challenge Id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Upvote</th>
+      <th></th>
+      <th>Created By</th>
+      <th>Created AT</th>
+      <th>Tags</th>
+      <th>Collabration</th>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @challenges.each do |challenge| %>
+      <tr>
+        <td><%= link_to challenge.id, challenge %></td>
+        <td><%= challenge.title %></td>
+        <td><%= challenge.description %></td>
+        <td><%= challenge.get_upvotes.size %></td>
+        <td><% if current_user.id != challenge.user_id%>
+        <%= link_to "+" , like_challenge_path(challenge),method: :put %>
+        <%end%></td>
+        <td><%= challenge.emp_id %></td>
+        <td><%= challenge.created_at %></td>
+        <td><%= challenge.tags %></td>
+        <td><%challenge.followers.each do  |x|%>
+          <%=x.emp_id %></br>
+        <%end%> </td>
+        <td>
+        <% if current_user.id != challenge.user_id%>
+        <%= link_to "\u2713" , follow_challenge_path(challenge),method: :put %>
+        <%end%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Challenge', new_challenge_path %>

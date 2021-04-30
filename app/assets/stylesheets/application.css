@@ -15,14 +15,38 @@
  */
 
 
- .navbar-header a {
-    color: #ffffff;
-    }
+
+
+.navbar-header a {
+color: #ffffff;
+}
 
 .navbar-header a:hover{
-    color: rgba(255,255,255,.75);
-    }
+color: rgba(255,255,255,.75);
+}
 
 .navbar-dark .navbar-nav .nav-link  {
-    color: #ffffff;
+color: #ffffff;
+}
+
+td,th{
+text-align:center;
+}
+
+.tablehead{
+background-color: #1743B4;
+}
+
+thead tr th{
+color: white;
+}
+
+.container-fluid{
+padding-left: 100px;
+padding-right: 100px;
+}
+
+a:link,  a:visited,  a:hover,  a:active,a  { 
+    text-decoration:none; 
+    color: black;
 }

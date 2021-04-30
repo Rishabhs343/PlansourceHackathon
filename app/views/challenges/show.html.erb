@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @challenge.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @challenge.description %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @challenge.tags %>
+</p>
+
+<p>
+  <strong>Created By:</strong>
+  <%= @challenge.emp_id %>
+</p>
+
+<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
+<%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<%= link_to 'Back', challenges_path %>

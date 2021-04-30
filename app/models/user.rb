@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :challenges
   before_commit :update_emp_id
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -7,6 +8,7 @@ class User < ApplicationRecord
    validates :emp_id, presence: true, uniqueness: { case_sensitive: false }
   
   validate :validate_emp_id
+  acts_as_follower
   
   def update_emp_id
     @newid= "E0" + self.id.to_s
@@ -38,5 +40,4 @@ class User < ApplicationRecord
       end
     end
   end
- end
- 
+end
