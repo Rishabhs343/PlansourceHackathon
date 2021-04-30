@@ -46,7 +46,7 @@ padding-left: 100px;
 padding-right: 100px;
 }
 
-a:link,  a:visited,  a:hover,  a:active,a  { 
+.table a:link,  .table a:visited,  .table a:hover,  .table a:active,.table a  { 
     text-decoration:none; 
     color: black;
 }
