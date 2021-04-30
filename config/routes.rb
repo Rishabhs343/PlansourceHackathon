@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       put :follow, to:'challenges#follow'
     end
   end
+  get '/search' => 'challenges#search', :as => 'search_page'
   root 'challenges#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

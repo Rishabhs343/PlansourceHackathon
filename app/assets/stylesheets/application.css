@@ -62,3 +62,24 @@ body {
  select.form-control{
      width: 30%;
  }
+
+.search_form{
+    float:right;
+}
+
+.challengelist{
+    text-align:left;
+    float:left;
+}
+
+.form-inline{
+    float:left;
+}
+
+.form-actions{
+    float: right;
+}
+
+.form-group{
+    display: block;
+}

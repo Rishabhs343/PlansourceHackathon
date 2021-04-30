@@ -3,8 +3,8 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :title ,class:"form-group newform col-md-4"%>
+  <div class="form-inputs form-inline">
+    <%= f.input :title ,class:"form-group newform col-md-4", style: 'display: block;'%>
     <%= f.input :description ,class:"form-group newform col-md-4"%>
     <%= f.input :tags , collection: ["Helvetica Arial, sans-serif", "Georgia, Times, serif"],class:"form-group newform col-md-4"%>
     <%= f.input :emp_id ,:as => :hidden, :input_html => { :value => current_user.emp_id }%>

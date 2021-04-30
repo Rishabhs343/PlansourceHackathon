@@ -82,6 +82,16 @@ class ChallengesController < ApplicationController
     redirect_to challenges_path
   end
 
+  def search
+    if params[:search].blank?  
+      redirect_to(root_path, notice: "Empty field!") and return  
+    else  
+      @parameter = params[:search].downcase  
+      @challenges = Challenge.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
+      @challenge = current_user.challenges.build
+    end  
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
