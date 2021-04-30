@@ -20,7 +20,10 @@
   <%= @challenge.emp_id %>
 </p>
 
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' } %> |
-
-<%= link_to 'Back', challenges_path %>
+<% if current_user.emp_id==@challenge.emp_id %>
+  <%= link_to 'Edit', edit_challenge_path(@challenge) %> |
+  <%= link_to 'Destroy', @challenge, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Back', challenges_path %>
+<% else %>
+  <%= link_to 'Back', challenges_path %>
+<% end %>
