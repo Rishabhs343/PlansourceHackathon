@@ -12,12 +12,12 @@
       <th>Challenge Id</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Upvote</th>
+      <th>Votes Count</th>
       <th></th>
       <th>Created By</th>
-      <th>Created AT</th>
+      <th>Create Date</th>
       <th>Tags</th>
-      <th>Collabration</th>
+      <th>Collaborators</th>
       <th colspan="8"></th>
     </tr>
   </thead>
@@ -30,7 +30,7 @@
         <td><%= challenge.description %></td>
         <td><%= challenge.get_upvotes.size %></td>
         <td><% if current_user.id != challenge.user_id%>
-        <%= link_to "+" , like_challenge_path(challenge),method: :put %>
+        <%= link_to "\u002B" , like_challenge_path(challenge),method: :put %>
         <%end%></td>
         <td><%= challenge.emp_id %></td>
         <td><%= challenge.created_at %></td>
