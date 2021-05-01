@@ -16,14 +16,20 @@
            </li>
  
        <% else %>
- 
-       <li class="nav-item">
+          <% unless current_page?(new_user_session_path) %>
+            <li class="nav-item">
            <%= link_to "Sign In", new_user_session_path, class:"nav-link" %>
-           </li>
+          </li>
+          <% end %>
+          
+          <% unless current_page?(new_user_registration_path) %>
+            <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %>
+            </li>
+          <% end %>
+          
  
-           <li class="nav-item">
-           <%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %>
-           </li>
+           
  
           
        <% end %>

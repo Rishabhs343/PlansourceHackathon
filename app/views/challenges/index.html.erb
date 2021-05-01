@@ -54,7 +54,7 @@
         <td>
           <% if challenge.followers.length>1 %>
             <select>
-              <%challenge.followers.each do |x|%>
+              <%challenge.followers.reverse_each do |x|%>
                 <option><%=x.emp_id %></option>
               <%end%>
             <select>

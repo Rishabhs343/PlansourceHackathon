@@ -15,7 +15,9 @@
  */
 
 
-
+.navbar-brand{
+    text-align: center;
+}
 
 .navbar-header a {
 color: #ffffff;
@@ -76,10 +78,29 @@ body {
     float:left;
 }
 
-.form-actions{
+.newformaction{
     float: right;
 }
 
 .form-group{
     display: block;
+}
+
+.user_login label , .user_password label, .user_email label , .user_password_confirmation label{
+    display: block;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}  
+
+.loginform input[type="submit"] {
+    width:100%;
+    }
+
+.login_container{
+    margin-top: 20vh;
+}
+
+.signup_container{
+    margin-top: 15vh;
 }
