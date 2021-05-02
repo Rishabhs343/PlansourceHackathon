@@ -104,3 +104,23 @@ body {
 .signup_container{
     margin-top: 15vh;
 }
+
+.formbtn    {
+    margin-top: 32px !important;
+    }
+
+.formspace{
+    padding-right: 250px !important;
+    padding-left: 10px !important;
+}
+
+.formspace .form-control{
+    width: 150%;
+}
+
+.challenge_title label , .challenge_description label, .challenge_tags label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 50%;
+}  
