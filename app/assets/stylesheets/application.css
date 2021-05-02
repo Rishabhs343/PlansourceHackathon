@@ -48,9 +48,14 @@ padding-left: 100px;
 padding-right: 100px;
 }
 
-.table a:link,  .table a:visited,  .table a:hover,  .table a:active,.table a  { 
+.tablebody a:link,  .tablebody a:visited,  .tablebody a:hover,  .tablebody a:active,.tablebody a  { 
     text-decoration:none; 
     color: black;
+}
+
+.tablehead a:link,  .tablehead a:visited,  .tablehead a:hover,  .tablehead a:active,.tablehead a  { 
+    text-decoration:none; 
+    color: white;
 }
 body {
     min-height: 400px;

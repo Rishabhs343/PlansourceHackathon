@@ -23,8 +23,8 @@
 <table class="table">
   <thead class='tablehead'>
     <tr>
-      <th>Challenge Id</th>
-      <th>Title</th>
+      <th><%= sortable "id","Challenge Id" %></th>
+      <th><%= sortable "title","Title" %></th>
       <th>Description</th>
       <th>Votes Count</th>
       <th></th>
@@ -36,7 +36,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class='tablebody'>
     <% @challenges.each do |challenge| %>
       <tr>
         <td><%= link_to challenge.id, challenge %></td>

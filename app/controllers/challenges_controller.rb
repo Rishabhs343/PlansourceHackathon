@@ -1,10 +1,11 @@
 class ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[ show edit update destroy ]
   before_action :correct_user, only: [:edit ,:update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /challenges or /challenges.json
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.order(sort_column + " " + sort_direction)
     @challenge = current_user.challenges.build
   end
 
@@ -89,10 +90,18 @@ class ChallengesController < ApplicationController
       @parameter = params[:search].downcase  
       @challenges = Challenge.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
       @challenge = current_user.challenges.build
-    end  
+    end   
   end
 
   private
+
+    def sort_column
+      Challenge.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
       @challenge = Challenge.find(params[:id])
