@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
@@ -6,9 +8,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:emp_id, :email, :password, :password_confirmation, :remember_me]
+    added_attrs = %i[emp_id email password password_confirmation remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
+    devise_parameter_sanitizer.permit :sign_in, keys: %i[login password]
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 end

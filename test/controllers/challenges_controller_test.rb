@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ChallengesControllerTest < ActionDispatch::IntegrationTest
@@ -5,40 +7,44 @@ class ChallengesControllerTest < ActionDispatch::IntegrationTest
     @challenge = challenges(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get challenges_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_challenge_url
     assert_response :success
   end
 
-  test "should create challenge" do
+  test 'should create challenge' do
     assert_difference('Challenge.count') do
-      post challenges_url, params: { challenge: { description: @challenge.description, emp_id: @challenge.emp_id, tags: @challenge.tags, title: @challenge.title, user_id: @challenge.user_id } }
+      post challenges_url,
+           params: { challenge: { description: @challenge.description, emp_id: @challenge.emp_id, tags: @challenge.tags,
+                                  title: @challenge.title, user_id: @challenge.user_id } }
     end
 
     assert_redirected_to challenge_url(Challenge.last)
   end
 
-  test "should show challenge" do
+  test 'should show challenge' do
     get challenge_url(@challenge)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_challenge_url(@challenge)
     assert_response :success
   end
 
-  test "should update challenge" do
-    patch challenge_url(@challenge), params: { challenge: { description: @challenge.description, emp_id: @challenge.emp_id, tags: @challenge.tags, title: @challenge.title, user_id: @challenge.user_id } }
+  test 'should update challenge' do
+    patch challenge_url(@challenge),
+          params: { challenge: { description: @challenge.description, emp_id: @challenge.emp_id, tags: @challenge.tags,
+                                 title: @challenge.title, user_id: @challenge.user_id } }
     assert_redirected_to challenge_url(@challenge)
   end
 
-  test "should destroy challenge" do
+  test 'should destroy challenge' do
     assert_difference('Challenge.count', -1) do
       delete challenge_url(@challenge)
     end
