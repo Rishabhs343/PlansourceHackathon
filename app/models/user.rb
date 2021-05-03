@@ -11,7 +11,11 @@ class User < ApplicationRecord
   acts_as_follower
   
   def update_emp_id
-    @newid= "E0" + self.id.to_s
+    if self.id.to_s.length<2
+      @newid= "E0" + self.id.to_s
+    else
+      @newid= "E" + self.id.to_s
+    end
     @user=User.find_by_id(self.id)
     @user.update(emp_id: @newid)
   end
