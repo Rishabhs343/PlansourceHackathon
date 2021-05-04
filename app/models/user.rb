@@ -7,10 +7,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  after_create :generate_api_token
   validates :emp_id, presence: true, uniqueness: { case_sensitive: false }
 
   validate :validate_emp_id
   acts_as_follower
+
+  def generate_api_token
+    self.api_token = Devise.friendly_token
+    save
+  end
 
   def update_emp_id
     @newid = if id.to_s.length < 2
@@ -20,6 +27,7 @@ class User < ApplicationRecord
              end
     @user = User.find_by(id: id)
     @user.update(emp_id: @newid)
+    @user.save
   end
 
   def validate_emp_id

@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-class ChallengesController < ApplicationController
+class Api::ChallengesController < ApplicationController
   before_action :set_challenge, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
   helper_method :sort_column, :sort_direction
 
   # GET /challenges or /challenges.json
   def index
-    # response = HTTParty.get("http://localhost:3000/api/challenges?api_token=#{current_user.api_token}")
-    # @challenges = JSON.parse(response.body).to_json 
     @challenges = Challenge.order("#{sort_column} #{sort_direction}")
-    @challenge = current_user.challenges.build
   end
 
   # GET /challenges/1 or /challenges/1.json
@@ -27,40 +24,27 @@ class ChallengesController < ApplicationController
 
   # POST /challenges or /challenges.json
   def create
-    # @challenge = Challenge.new(challenge_params)
     @challenge = current_user.challenges.build(challenge_params)
 
-    respond_to do |format|
-      if @challenge.save
-        format.html { redirect_to root_path, notice: 'Challenge was successfully created.' }
-        format.json { render :show, status: :created, location: @challenge }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
-      end
+    if @challenge.save
+      render json: @challenge, status: :created, location: @challenge
+    else
+      render json: @challenge.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /challenges/1 or /challenges/1.json
   def update
-    respond_to do |format|
-      if @challenge.update(challenge_params)
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
-        format.json { render :show, status: :ok, location: @challenge }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
-      end
+    if @challenge.update(challenge_params)
+      render json: @challenge
+    else
+      render json: @challenge.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /challenges/1 or /challenges/1.json
   def destroy
     @challenge.destroy
-    respond_to do |format|
-      format.html { redirect_to challenges_url, notice: 'Challenge was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   def correct_user
