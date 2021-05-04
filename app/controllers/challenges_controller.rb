@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
   # GET /challenges or /challenges.json
   def index
     # response = HTTParty.get("http://localhost:3000/api/challenges?api_token=#{current_user.api_token}")
-    # @challenges = JSON.parse(response.body).to_json 
+    # @challenges = JSON.parse(response.body).to_json
     @challenges = Challenge.order("#{sort_column} #{sort_direction}")
     @challenge = current_user.challenges.build
   end

@@ -12,12 +12,15 @@ class User < ApplicationRecord
   validates :emp_id, presence: true, uniqueness: { case_sensitive: false }
 
   validate :validate_emp_id
+  after_create :create
   acts_as_follower
 
   def generate_api_token
     self.api_token = Devise.friendly_token
     save
   end
+
+  
 
   def update_emp_id
     @newid = if id.to_s.length < 2
@@ -48,5 +51,9 @@ class User < ApplicationRecord
     else
       where(emp_id: conditions[:emp_id]).first
     end
+  end
+
+  def create
+    UserMailer.welcome_email(self).deliver
   end
 end
