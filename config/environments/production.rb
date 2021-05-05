@@ -90,7 +90,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.require_master_key = true
   config.action_mailer.default_url_options = { host: 'https://plansource-hackathon.herokuapp.com' }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
