@@ -1,8 +1,7 @@
-# app/views/user_mailer/welcome_email.html.erb
-<h1>Welcome, <%= @user.email %></h1>
+<h1>Welcome,</h1><h2><%= @user.email %></h2>
   <p>
-    You have successfully signed up to plansource-hackathon.herokuapp.com,
-    Your Employee Id: <%= @user.emp_id %>.<br>
+    You have successfully signed up to plansource-hackathon.herokuapp.com,<br>
+    <h3>Your Employee Id: <%= @user.emp_id %>.</h3><br>
     Your API TOKEN : <%= @user.api_token %>.<br>
   </p>
 <p>Thanks for joining and have a great day!</p>

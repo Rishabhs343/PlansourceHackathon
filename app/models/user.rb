@@ -2,17 +2,18 @@
 
 class User < ApplicationRecord
   has_many :challenges
-  before_commit :update_emp_id
+  after_create :generate_api_token
+  after_create :update_emp_id
+  after_create :welcomemail_create
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :generate_api_token
   validates :emp_id, presence: true, uniqueness: { case_sensitive: false }
 
   validate :validate_emp_id
-  after_create :create
   acts_as_follower
 
   def generate_api_token
@@ -28,9 +29,10 @@ class User < ApplicationRecord
              else
                "E#{id}"
              end
-    @user = User.find_by(id: id)
-    @user.update(emp_id: @newid)
-    @user.save
+    # @user = User.find_by(id: id)
+    self.emp_id=@newid
+    # @user.update(emp_id: @newid)
+    save
   end
 
   def validate_emp_id
@@ -53,7 +55,7 @@ class User < ApplicationRecord
     end
   end
 
-  def create
+  def welcomemail_create
     UserMailer.welcome_email(self).deliver
   end
 end
