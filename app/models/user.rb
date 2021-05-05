@@ -12,7 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :emp_id, presence: true, uniqueness: { case_sensitive: false }
-
   validate :validate_emp_id
   acts_as_follower
 
@@ -21,8 +20,6 @@ class User < ApplicationRecord
     save
   end
 
-  
-
   def update_emp_id
     @newid = if id.to_s.length < 2
                "E0#{id}"
@@ -30,7 +27,7 @@ class User < ApplicationRecord
                "E#{id}"
              end
     # @user = User.find_by(id: id)
-    self.emp_id=@newid
+    self.emp_id = @newid
     # @user.update(emp_id: @newid)
     save
   end

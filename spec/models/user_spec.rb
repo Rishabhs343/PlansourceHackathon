@@ -3,5 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # describe "generate api token" do
+  #     context "using devise friendly_token" do
+  #       it "returns random" do
+  #         expect(generate_api_token.stub).to eql('2QPGqo3UtNwJn3rNP9J')
+  #       end
+  #     end
+  # end
 end

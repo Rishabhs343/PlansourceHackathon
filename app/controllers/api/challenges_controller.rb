@@ -12,20 +12,24 @@ module Api
     end
 
     # GET /challenges/1 or /challenges/1.json
-    def show; end
-
-    # GET /challenges/new
-    def new
-      # @challenge = Challenge.new
-      @challenge = current_user.challenges.build
+    def show
+      @challenges = Challenge.find(params[:id])
+      render json: @challenges
     end
 
-    # GET /challenges/1/edit
-    def edit; end
-
     # POST /challenges or /challenges.json
+    # Pass data to create 127.0.0.1:3000/api/challenges?api_token=2_QPGqo3UtNwJn3rNP9J
+    #   {
+    #     "challenge": {
+    #         "title": "1322332",
+    #         "description": "1233332",
+    #         "tags": "Helvetica Arial, sans-serif",
+    #         "emp_id": "E24",
+    #         "user_id": 24
+    #     }
+    #   }
     def create
-      @challenge = current_user.challenges.build(challenge_params)
+      @challenge = Challenge.new(challenge_params)
 
       if @challenge.save
         render json: @challenge, status: :created, location: @challenge
@@ -35,6 +39,17 @@ module Api
     end
 
     # PATCH/PUT /challenges/1 or /challenges/1.json
+    # http://127.0.0.1:3000/api/challenges/19?api_token=2_QPGqo3UtNwJn3rNP9J
+    #   {
+    #     "challenge": {
+    #         "title": "myuserid",
+    #         "description": "1233332",
+    #         "tags": "Helvetica Arial, sans-serif",
+    #         "emp_id": "E24",
+    #         "user_id": 24
+    #     }
+    # }
+
     def update
       if @challenge.update(challenge_params)
         render json: @challenge
@@ -44,6 +59,7 @@ module Api
     end
 
     # DELETE /challenges/1 or /challenges/1.json
+    # Delete http://127.0.0.1:3000/api/challenges/20?api_token=2_QPGqo3UtNwJn3rNP9J
     def destroy
       @challenge.destroy
     end

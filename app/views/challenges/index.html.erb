@@ -29,14 +29,12 @@
       <th>Votes Count</th>
       <th></th>
       <th>Created By</th>
-      <th>Create Date</th>
+      <th><%= sortable "created_at","Create Date" %></th>
       <th>Tags</th>
       <th>Collaborators</th>
       <th colspan="8"></th>
     </tr>
   </thead>
-    <% puts(@challenges) %>
-
   <tbody class='tablebody'>
     <% @challenges.each do |challenge| %>
       <tr>
@@ -73,4 +71,15 @@
 </table>
 
 <br>
+
+<%= will_paginate @challenges, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center) %>
+
+<%
+=begin%>
+ 
+<% @newchallenges.each do |data|  %>
+  <%= data['challenge']['id'] %><br>
+<% end %> 
+<%
+=end%>
 

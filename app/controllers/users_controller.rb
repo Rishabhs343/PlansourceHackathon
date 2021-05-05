@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  # respond_to :json
+
   def api_token
     @user = User.find(params[:id])
 

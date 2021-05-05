@@ -44,7 +44,7 @@ color: white;
 }
 
 .container-fluid{
-padding-left: 100px;
+padding-left: 110px;
 padding-right: 100px;
 }
 
@@ -123,9 +123,20 @@ body {
     width: 150%;
 }
 
-.challenge_title label , .challenge_description label, .challenge_tags label {
+.challenge_title label , .challenge_description label {
     display: block;
     text-align: center;
     font-weight: bold;
     margin-left: 50%;
 }  
+
+.challenge_tags label{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 28%;
+}
+
+.collection_select{
+    width: 200px;
+}
