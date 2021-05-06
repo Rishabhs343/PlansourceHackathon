@@ -9,7 +9,7 @@ class ChallengesController < ApplicationController
   def index
     # response = HTTParty.get("http://localhost:3000/api/challenges?api_token=#{current_user.api_token}")
     # @newchallenges = JSON.parse(response.body)
-    @challenges = Challenge.paginate(page: params[:page], per_page: 10).order("#{sort_column} #{sort_direction}")
+    @challenges = Challenge.paginate(page: params[:page], per_page: 5).order("#{sort_column} #{sort_direction}")
     @challenge = current_user.challenges.build
   end
 

@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Challenge, type: :model do
-  current_user = User.first_or_create(email: 'test@example.com', password: 'password',
-                                      password_confirmation: 'password')
+  current_user = User.first_or_create(email: "rishabh@gmail.com", password: "11111", password_confirmation: "11111", emp_id: "E01")
   it 'title' do
     challenge = Challenge.new(
       title: '',
@@ -14,51 +13,51 @@ RSpec.describe Challenge, type: :model do
     )
     expect(challenge).to_not be_valid
 
-    challenge.title = 'has a title'
+    challenge.title = 'new title'
     expect(challenge).to be_valid
   end
 
-  it 'should have a description' do
+  it 'description' do
     challenge = Challenge.new(
-      title: 'A title',
+      title: 'Test Title',
       description: '',
       tags: 'a tags in',
       user: current_user
     )
     expect(challenge).to_not be_valid
 
-    challenge.description = 'has a description'
+    challenge.description = 'new description'
     expect(challenge).to be_valid
   end
 
-  it 'should have a tags' do
+  it 'tags' do
     challenge = Challenge.new(
-      title: 'A title',
+      title: 'Test Title',
       description: 'A description test',
       tags: '',
       user: current_user
     )
-    expect(challenge).to_not be_valid
+    expect(challenge).to be_valid
   end
 
-  it 'has title atleast 4 to 20 characters' do
+  it 'title has minimum 4 characters' do
     challenge = Challenge.new(
       title: '',
-      description: 'A description test',
-      tags: 'has a tags',
+      description: 'New description',
+      tags: 'New Tags',
       user: current_user
     )
     expect(challenge).to_not be_valid
 
-    challenge.title = '1234'
+    challenge.title = 'Test Title'
     expect(challenge).to be_valid
   end
 
-  it 'has description atleast  4 to 20 characters' do
+  it 'description has minimum 4 character' do
     challenge = Challenge.new(
-      title: 'A title',
+      title: 'Test Title',
       description: '',
-      tags: 'has a tags',
+      tags: 'New tags',
       user: current_user
     )
     expect(challenge).to_not be_valid
@@ -66,11 +65,11 @@ RSpec.describe Challenge, type: :model do
     challenge.description = '1234'
     expect(challenge).to be_valid
 
-    char_string = 'fqMdqb8PUJpjYYD5KRVogqRp5qapXLzUW9TQ7H5XpSsii0jga6'
-    challenge.description = char_string
+    string = 'qwertyuiasdfghjklzxc'
+    challenge.description = string
     expect(challenge).to be_valid
 
-    challenge.description = "#{char_string}1"
+    challenge.description = "#{string}"*3
     expect(challenge).to_not be_valid
   end
 end

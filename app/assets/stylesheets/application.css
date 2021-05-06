@@ -140,3 +140,15 @@ body {
 .collection_select{
     width: 200px;
 }
+
+.tablehead th{
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tablebody td{
+    font-size: large;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}

@@ -17,15 +17,13 @@ require 'rails_helper'
 RSpec.describe '/challenges', type: :request do
   # Challenge. As you add validations to Challenge, be sure to
   # adjust the attributes here as well.
-  current_user = User.first_or_create(email: 'test@example.com', password: 'password',
-                                      password_confirmation: 'password')
+  current_user = User.first_or_create(email: "rishabh@gmail.com", password: "11111", password_confirmation: "11111", emp_id: "E01")
   let(:valid_attributes) do
     {
       'id' => '1',
-      'title' => 'Test one',
+      'title' => 'Title',
       'description' => '12345',
-      'tag' => '12345',
-      'user' => current_user
+      'tag' => '12345'
     }
   end
   let(:invalid_attributes) do
@@ -52,13 +50,6 @@ RSpec.describe '/challenges', type: :request do
       challenge.user = current_user
       challenge.save
       get challenge_url(challenge)
-      expect(response).to_not be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_challenge_url
       expect(response).to_not be_successful
     end
   end
@@ -93,13 +84,6 @@ RSpec.describe '/challenges', type: :request do
     it 'renders a successful response' do
       challenge = Challenge.create! valid_attributes
       get challenge_url(challenge)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_challenge_url
       expect(response).to be_successful
     end
   end
