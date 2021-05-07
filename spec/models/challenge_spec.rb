@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Challenge, type: :model do
-  current_user = User.first_or_create(email: "rishabh@gmail.com", password: "11111", password_confirmation: "11111", emp_id: "E01")
+  current_user = User.first_or_create(email: 'rishabh@gmail.com', password: '11111', password_confirmation: '11111',
+                                      emp_id: 'E01')
   it 'title' do
     challenge = Challenge.new(
       title: '',
@@ -69,7 +70,7 @@ RSpec.describe Challenge, type: :model do
     challenge.description = string
     expect(challenge).to be_valid
 
-    challenge.description = "#{string}"*3
+    challenge.description = string.to_s * 3
     expect(challenge).to_not be_valid
   end
 end

@@ -13,5 +13,5 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ApplicationHelper, type: :helper do
-  before { skip("Awaiting a fix in the gem") }
+  before { skip('Awaiting a fix in the gem') }
 end

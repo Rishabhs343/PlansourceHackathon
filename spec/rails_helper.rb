@@ -2,7 +2,7 @@
 
 require 'simplecov'
 SimpleCov.start 'rails' do
-  add_group "Views", "app/views"
+  add_group 'Views', 'app/views'
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/app/channels'
@@ -16,6 +16,7 @@ SimpleCov.start 'rails' do
   add_filter '/test/' # for minitest
 end
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'devise'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -48,18 +49,15 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::Test::ControllerHelpers, type: :controller
 
-
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
