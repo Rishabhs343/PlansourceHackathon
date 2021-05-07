@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :challenges
   after_create :generate_api_token
   after_create :update_emp_id
-  after_create :welcomemail_create
+  # after_create :welcomemail_create
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -52,7 +52,7 @@ class User < ApplicationRecord
     end
   end
 
-  def welcomemail_create
-    UserMailer.welcome_email(self).deliver
-  end
+  # def welcomemail_create
+  #   UserMailer.welcome_email(self).deliver
+  # end
 end
