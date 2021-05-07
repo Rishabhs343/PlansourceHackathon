@@ -2,6 +2,7 @@
 
 require 'simplecov'
 SimpleCov.start 'rails' do
+  add_group "Views", "app/views"
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/app/channels'
